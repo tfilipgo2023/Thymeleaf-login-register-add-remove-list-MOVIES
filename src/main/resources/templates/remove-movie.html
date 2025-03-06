@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Remover Filme</title>
+    <link rel="stylesheet" th:href="@{/css/styleMovie.css}">
+</head>
+<body>
+<div class="login-container">
+    <h2>Remover Filme</h2>
+    <div th:if="${successMessage}" style="color: green; text-align: center;">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" style="color: red; text-align: center;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    <form th:action="@{/movies/remove-movie}" method="post">
+        <div class="input-group">
+            <input type="text" name="id" placeholder="ID do Filme">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <button type="submit">Remover Filme</button>
+        </div>
+    </form>
+
+    <div style="">
+        <button th:onclick="'location.href=\'' + @{/auth/lobby} + '\''">Voltar</button>
+    </div>
+</div>
+</body>
+</html>

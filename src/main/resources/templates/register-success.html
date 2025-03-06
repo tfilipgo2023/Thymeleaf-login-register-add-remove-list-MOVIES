@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registo Concluído</title>
+    <link rel="stylesheet" th:href="@{/css/styleLoginRegister.css}">
+</head>
+<body>
+<div class="login-container">
+    <h2 th:text="${success}"></h2>
+    <h3>O seu registo foi concluído com sucesso. Pode agora fazer login.</h3>
+    <button style="margin-left: 33%;" th:onclick="'location.href=\'' + @{/auth/index} + '\''">Ir para a página inicial</button>
+</div>
+</body>
+</html>

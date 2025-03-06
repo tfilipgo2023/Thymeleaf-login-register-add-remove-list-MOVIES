@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Lista de Filmes</title>
+    <link rel="stylesheet" th:href="@{/css/styleMovie.css}">
+</head>
+<body>
+<div class="login-container">
+    <h2>Lista de Filmes</h2>
+    <form th:action="@{/movies/list}" method="get">
+        <div class="input-group" style="margin-left:0%;" >
+            <div class="input-group dropdown-container" style="margin-left:1.8%;">
+                <select name="id">
+                        <option value="">Selecione um ID</option>
+                        <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.id}"></option>
+                </select>
+            </div>
+            <div style="margin-top: 30px;">
+                <button type="submit">Exibir Detalhes</button>
+            </div>
+        </div>
+    </form>
+
+    <div th:if="${selectedMovie}" class="movie-details">
+        <h3>Informações do Filme</h3>
+        <p><strong>Título:</strong> <span th:text="${selectedMovie.titulo}"></span></p>
+        <p><strong>Autor:</strong> <span th:text="${selectedMovie.autor}"></span></p>
+        <p><strong>Categoria:</strong> <span th:text="${selectedMovie.categoria}"></span></p>
+        <p><strong>Duração:</strong> <span th:text="${selectedMovie.duracao}"></span></p>
+        <p><strong>Editora:</strong> <span th:text="${selectedMovie.editora}"></span></p>
+        <p><strong>Ano de Lançamento:</strong> <span th:text="${selectedMovie.anoLancamento}"></span></p>
+    </div>
+
+    <div th:if="${errorMessage}" style="color: red;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+        <button th:onclick="'location.href=\'' + @{/auth/lobby} + '\''">Voltar</button>
+</div>
+</body>
+</html>

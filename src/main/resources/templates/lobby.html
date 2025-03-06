@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
+    <title>Formação SpringBoot</title>
+</head>
+<body>
+<div class="login-container">
+    <button th:onclick="'location.href=\'' + @{/movies/add-movie} + '\''">Adicionar Filme</button>
+    <button th:onclick="'location.href=\'' + @{/movies/remove-movie} + '\''">Apagar Filme</button>
+    <button th:onclick="'location.href=\'' + @{/movies/list} + '\''">Lista Filmes</button>
+    <button th:onclick="'location.href=\'' + @{/auth/index} + '\''">Sair</button>
+</div>
+</body>
+</html>

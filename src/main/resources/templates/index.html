@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
+    <title>Formação SpringBoot</title>
+</head>
+<body>
+<div class="login-container">
+    <h2>Formação SpringBoot </h2>
+    <h3>NTT DATA 2025</h3>
+    <button th:onclick="'location.href=\'' + @{/auth/login} + '\''">Login</button>
+    <button th:onclick="'location.href=\'' + @{/auth/register} + '\''">Registar</button>
+</div>
+</body>
+</html>
