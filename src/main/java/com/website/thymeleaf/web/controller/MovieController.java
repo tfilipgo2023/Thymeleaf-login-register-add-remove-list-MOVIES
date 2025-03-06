@@ -25,7 +25,7 @@ public class MovieController {
 
     @GetMapping("/add-movie")
     public String showAddMovieForm(Model model) {
-        model.addAttribute("movie", new Movie()); // Adiciona um objeto Movie ao Model
+        model.addAttribute("movie", new Movie());
         return "add-movie";
     }
 

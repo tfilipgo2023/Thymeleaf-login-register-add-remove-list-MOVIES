@@ -67,13 +67,13 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    width: 200px; /* Ajuste a largura conforme necessário */
+    width: 200px;
 }
 
 select:focus {
     outline: none;
-    border-color: #007bff; /* Cor de destaque ao focar */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 option {
@@ -82,13 +82,12 @@ option {
 }
 
 option:hover {
-    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+    background-color: #f0f0f0;
 }
 .dropdown-container {
-    align-items: center; /* Alinhar verticalmente */
+    align-items: center;
 }
 
 .dropdown-container button {
-    margin-left: 10px; /* Adicionar espaço entre o dropdown e o botão */
-}
+    margin-left: 10px;
 
