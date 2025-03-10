@@ -23,6 +23,12 @@ public class MovieController {
     @Autowired
     private MovieRepository movieRepository;
 
+    @GetMapping("/lobby")
+    public String showLobby() {
+        return "lobby";
+    }
+
+    //------------------------add-movie--------------------//
     @GetMapping("/add-movie")
     public String showAddMovieForm(Model model) {
         model.addAttribute("movie", new Movie());
@@ -44,33 +50,7 @@ public class MovieController {
         }
         return "add-movie";
     }
-
-    @GetMapping("/update/{id}")
-    public String showUpdateMovieForm(@PathVariable Long id, Model model) {
-        Movie movie = movieService.getMovie(id);
-        model.addAttribute("movie", movie);
-        return "updateMovie";
-    }
-
-    @PostMapping("/update/{id}")
-    public String updateMovie(@PathVariable Long id, @ModelAttribute Movie movie) {
-        movieService.updateMovie(id, movie);
-        return "redirect:/movies/list";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String removeMovie(@PathVariable Long id) {
-        movieService.removeMovie(id);
-        return "redirect:/movies/list";
-    }
-
-    @GetMapping("/{id}")
-    public String getMovie(@PathVariable Long id, Model model) {
-        Movie movie = movieService.getMovie(id);
-        model.addAttribute("movie", movie);
-        return "movieDetails";
-    }
-
+    //------------------------remove-movie--------------------//
     @GetMapping("/remove-movie")
     public String showRemoveMovieForm() {
         return "remove-movie";
@@ -95,7 +75,7 @@ public class MovieController {
         }
         return "remove-movie";
     }
-
+    //------------------------movie-list--------------------//
     @GetMapping("/list")
     public String listMovies(@RequestParam(required = false) Long id, Model model) {
         List<Movie> movies = movieService.listMovie();
@@ -110,5 +90,31 @@ public class MovieController {
             }
         }
         return "movie-list";
+    }
+//------------------------movie-list-actions--------------------//
+    @GetMapping("/list-actions")
+    public String listMoviesWithActions(Model model) {
+        List<Movie> movies = movieService.listMovie();
+        model.addAttribute("movies", movies);
+        return "movie-list-actions";
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeMovieAction(@PathVariable Long id) {
+        movieService.removeMovie(id);
+        return "redirect:/movies/list-actions";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editMovie(@PathVariable Long id, Model model) {
+        Movie movie = movieRepository.findById(id).orElse(null);
+        model.addAttribute("movie", movie);
+        return "edit-movie.html";
+    }
+
+    @PostMapping("/update")
+    public String updateMovie(@ModelAttribute Movie movie) {
+        movieService.updateMovie(movie);
+        return "redirect:/movies/list-actions";
     }
 }

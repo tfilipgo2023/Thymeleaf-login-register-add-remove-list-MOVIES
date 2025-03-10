@@ -18,10 +18,10 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
-    public Movie updateMovie(Long id, Movie movie) {
-        movie.setId(id);
+    public Movie updateMovie(Movie movie) {
         return movieRepository.save(movie);
     }
+
 
     public void removeMovie(Long id) {
         movieRepository.deleteById(id);

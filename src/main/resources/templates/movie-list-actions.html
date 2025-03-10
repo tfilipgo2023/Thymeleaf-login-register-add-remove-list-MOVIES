@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Lista de Filmes com Ações</title>
+    <link rel="stylesheet" th:href="@{/css/styleMovie.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="login-container">
+    <h2>Lista de Todos os Filmes</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoria</th>
+            <th>Duração</th>
+            <th>Editora</th>
+            <th>Ano de Lançamento</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.id}"></td>
+            <td th:text="${movie.titulo}"></td>
+            <td th:text="${movie.autor}"></td>
+            <td th:text="${movie.categoria}"></td>
+            <td th:text="${movie.duracao}"></td>
+            <td th:text="${movie.editora}"></td>
+            <td th:text="${movie.anoLancamento}"></td>
+            <td>
+                <a th:href="@{'/movies/remove/' + ${movie.id}}"><i class="fas fa-trash-alt"></i></a>
+                <a th:href="@{'/movies/edit/' + ${movie.id}}"><i class="fas fa-edit"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="margin-left: 36.5%;">
+        <button th:onclick="'location.href=\'' + @{/movies/lobby} + '\''">Voltar</button>
+    </div>
+</div>
+</body>
+</html>

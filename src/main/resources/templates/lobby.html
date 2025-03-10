@@ -10,8 +10,11 @@
 <div class="login-container">
     <button th:onclick="'location.href=\'' + @{/movies/add-movie} + '\''">Adicionar Filme</button>
     <button th:onclick="'location.href=\'' + @{/movies/remove-movie} + '\''">Apagar Filme</button>
-    <button th:onclick="'location.href=\'' + @{/movies/list} + '\''">Lista Filmes</button>
-    <button th:onclick="'location.href=\'' + @{/auth/index} + '\''">Sair</button>
+    <button th:onclick="'location.href=\'' + @{/movies/list-actions} + '\''">Lista Filmes</button>
+    <button th:onclick="'location.href=\'' + @{/movies/list} + '\''">Informação Detalhada</button>
+    <form th:action="@{/auth/logout}" method="post">
+        <button type="submit">Sair</button>
+    </form>
 </div>
 </body>
 </html>

@@ -56,18 +56,16 @@ public class AuthController {
 
     @GetMapping("/login")
     public String showLoginForm() {
+        System.out.println("Página de login exibida.");
         return "login";
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute User user, Model model) {
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-            return "redirect:/auth/lobby";
-        } else {
-            model.addAttribute("error", "Email ou senha inválidos");
-            return "login";
-        }
+    public String loginUser(@RequestParam String username, @RequestParam String password) {
+        System.out.println("Requisição de login recebida.");
+        System.out.println("Email: " + username);
+        System.out.println("Senha: " + password);
+        return "redirect:/movies/lobby";
     }
 
     @GetMapping("/index")
@@ -75,8 +73,4 @@ public class AuthController {
         return "index";
     }
 
-    @GetMapping("/lobby")
-    public String showLobby() {
-        return "lobby";
-    }
 }
